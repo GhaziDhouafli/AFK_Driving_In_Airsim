@@ -5,3 +5,4 @@ AirSim is a simulator for drones, cars and more, built on Unreal Engine. It is o
 In order to achieve the desired goal, i used the MediaPipe for hand detection. MediaPipe Hands utilizes an ML pipeline consisting of multiple models working together: A palm detection model that operates on the full image and returns an oriented hand bounding box. A hand landmark model that operates on the cropped image region defined by the palm detector and returns high-fidelity 3D hand keypoints. 
 
 After detection both hands, I took the output of both wrists and compared them to see if the driver wants to go forward,left or right. 
+![Capture](https://user-images.githubusercontent.com/103439643/171045580-e76a93a2-ca82-44a4-b584-b3212d4eb161.PNG)
