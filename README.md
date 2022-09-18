@@ -6,10 +6,10 @@ In order to achieve the desired goal, i used the MediaPipe for hand detection. M
 
 In your script, all you have to do is to install mediapipe (pip install mediapipe) and then import it
 
-##**2- Download Airsim:**
+## **2- Download Airsim:**
 you can download and install it from this link : https://github.com/microsoft/AirSim
 
-##**3- Running both airsim_simulator and main.py:**
+## **3- Running both airsim_simulator and main.py:**
 
 The code is so simple and there's comments that can help you understand everything written.
 
