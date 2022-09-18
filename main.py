@@ -7,7 +7,7 @@ import time
 import numpy as np
 import math
 
-
+# This function will get you the coordinations of each wrists
 def get_label(index, hand, results):
     output = None
     for idx, classification in enumerate(results.multi_handedness):
@@ -40,7 +40,7 @@ try:
 except OSError:
     if not os.path.isdir(tmp_dir):
         raise
-
+#extract the coordinates of the hands in mediapipe
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
@@ -58,22 +58,27 @@ with mp_hands.Hands(
         image.flags.writeable = True
         image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-
+        # in the case where hands are detected
         if results.multi_hand_landmarks:
             right=[]
             left=[]
+            #drawing hand landmarks
             for num, hand in enumerate(results.multi_hand_landmarks):
                 mp_drawing.draw_landmarks(image, hand, mp_hands.HAND_CONNECTIONS,
                                           mp_drawing.DrawingSpec(color=(121, 22, 76), thickness=2, circle_radius=4),
                                           mp_drawing.DrawingSpec(color=(250, 44, 250), thickness=2, circle_radius=2),
-                                          )
+                                            )
+            
                 if get_label(num, hand, results):
                     text, coord = get_label(num, hand, results)
+                    #wrist corrdinations  of the right hands
                     if (text=='Right'):
                         right=[coord[0]-5,coord[1]-5]
+                    #wrist coordinations of the left hand
                     else:
                         left = [coord[0]-5, coord[1]-5]
                     if (len(right)==2 and len(left)==2):
+                        #measuring the angle between the x axe and the line passing through the wrists
                         u=right[0]-left[0]
                         m=right[1]-left[1]
                         n=1
@@ -101,7 +106,7 @@ with mp_hands.Hands(
                             print("Go Forward, steer right")
                             time.sleep(0.5)  # let car drive a bit
                         elif(-65<=angle<=-25):
-                            # Go forward + steer right
+                            # Go forward + steer left
                             car_controls.throttle = 0.5
                             car_controls.steering = -0.5
                             client.setCarControls(car_controls)
