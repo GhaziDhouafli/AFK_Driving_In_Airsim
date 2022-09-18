@@ -1,4 +1,4 @@
-# Hand_Driving_In_Airsim
+# AFK_Driving_In_Airsim
 In this project, I was able to drive a car in Airsim simulator without using the keyboard. 
 AirSim is a simulator for drones, cars and more, built on Unreal Engine. It is open-source, cross platform, and supports software-in-the-loop simulation with popular flight controllers such as PX4 & ArduPilot and hardware-in-loop with PX4 for physically and visually realistic simulations. It is developed as an Unreal plugin that can simply be dropped into any Unreal environment.
 ## **1- install Mediapipe:**
